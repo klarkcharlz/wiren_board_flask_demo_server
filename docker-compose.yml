@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5005:5005"
+    restart: always
+    command: bash -c "
+      python run.py
+      "
+    depends_on:
+      - db
