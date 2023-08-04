@@ -9,5 +9,3 @@ services:
     command: bash -c "
       python run.py
       "
-    depends_on:
-      - db
