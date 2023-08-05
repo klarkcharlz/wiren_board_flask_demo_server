@@ -2,3 +2,6 @@ venv
 .idea
 __pycache__
 backend/__pycache__/
+/monitoring/data/
+/frontend/demo/node_modules/
+/backend/data/
