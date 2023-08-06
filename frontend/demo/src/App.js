@@ -20,13 +20,28 @@ function App() {
         })
     }
 
-    useEffect( () => {
-        getData();
-    }, []);
 
     return (
         <div className="App">
-            <h1>{JSON.stringify(data)}</h1>
+            <button
+                onClick={(e) => {
+                    e.preventDefault();
+                    getData();
+                }}
+                type='button'>
+                Get Data
+            </button>
+            <div>
+                <ul style={{border: '2px solid black'}}>
+                    {Object.keys(data).map((key, index) => {
+                        return (
+                            <li key={index}>
+                                {`${key}: ${data[key]}`}
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
         </div>
     );
 }
