@@ -5,3 +5,4 @@ backend/__pycache__/
 /monitoring/data/
 /frontend/demo/node_modules/
 /backend/data/
+.DS_Store
