@@ -4,7 +4,6 @@ services:
 
   monitoring:
     build: ./monitoring
-    restart: always
     command: bash -c "
       python data_generator.py
       "
@@ -15,7 +14,6 @@ services:
     build: ./backend
     ports:
       - "5005:5005"
-    restart: always
     command: bash -c "
       python run.py
       "
