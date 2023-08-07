@@ -4,7 +4,7 @@ import React, {useState, useEffect} from "react";
 
 
 function App() {
-    const DATA_URL = 'http://127.0.0.1:5005';
+    const DATA_URL = 'http://192.168.2.39:5005';
 
     const [data, setData] = useState({});
 
