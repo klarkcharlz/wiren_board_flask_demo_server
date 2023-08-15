@@ -9,9 +9,6 @@ services:
       "
     volumes:
       - ./data:/data
-    networks:
-      - my-network
-
 
   backend:
     build: ./backend
@@ -24,16 +21,8 @@ services:
       - monitoring
     volumes:
       - ./data:/data
-    networks:
-      - my-network
-
 
   frontend:
     build: ./frontend
     ports:
-      - 8081:8081
-    networks:
-      - my-network
-
-networks:
-  my-network:
+      - "8081:8081"
