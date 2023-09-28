@@ -1,14 +1,14 @@
 from datetime import timedelta
+from typing import Final
+import json
 
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import (
     create_access_token,
     create_refresh_token,
     jwt_required,
-    # jwt_refresh_token_required,
-    get_jwt_identity,
-    # get_raw_jwt
 )
+from flask import jsonify
 
 from logger import logger
 
@@ -27,11 +27,18 @@ parser.add_argument(
 
 
 class Demo(Resource):
+    DATA_PATH: Final = './data/data.json'
 
     def get(self):
-        return {
-            'message': 'Hello, World!'
-        }
+        try:
+            with open(self.DATA_PATH, 'r') as json_file:
+                data = json.load(json_file)
+        except Exception:
+            return jsonify({
+                'message': 'Data not Found!'
+            })
+        else:
+            return jsonify(data)
 
 
 class UserRegistration(Resource):

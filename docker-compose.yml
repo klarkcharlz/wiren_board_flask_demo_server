@@ -1,11 +1,28 @@
 version: '3.1'
 
 services:
+
+  monitoring:
+    build: ./monitoring
+    command: bash -c "
+      python data_generator.py
+      "
+    volumes:
+      - ./data:/data
+
   backend:
     build: ./backend
     ports:
       - "5005:5005"
-    restart: always
     command: bash -c "
       python run.py
       "
+    depends_on:
+      - monitoring
+    volumes:
+      - ./data:/data
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8081:8081"
